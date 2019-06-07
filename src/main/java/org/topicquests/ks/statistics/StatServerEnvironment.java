@@ -18,10 +18,26 @@ public class StatServerEnvironment extends RootEnvironment {
 	private IStatServerModel model;
 	private StopperListener stopper;
 	boolean isStopped = false;
+	
 	/**
+	 * Default constructor
 	 */
 	public StatServerEnvironment() {
 		super("config-props.xml", "logger.properties");
+		Boot();
+	}
+	
+	/**
+	 * Custom constructor
+	 * @param configPath
+	 * @param logPath
+	 */
+	public StatServerEnvironment(String configPath, String logPath) {
+		super(configPath, logPath);
+		Boot();
+	}
+	
+	void Boot() {
 		stopper = new StopperListener(this);
 		System.out.println("A");
 		try {
